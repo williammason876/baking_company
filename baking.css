@@ -1,0 +1,28 @@
+h1 {
+	text-align:center;
+	font-style: italic;
+}
+
+.cart{padding-top:50px;}
+
+#checkout-img{
+	width: 50px;
+	height: 50px;
+}
+legend{
+	font-weight:bold;
+}
+
+body{
+	background-color: aliceblue;
+}
+
+#carousel-img{
+	width: 400px;
+	height: 400px;
+}
+#mason-carousel{
+	padding-top: 50px;
+	padding-left:100px;
+	text-align: center;
+}
