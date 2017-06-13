@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel = "stylesheet" href = "baking.css">
+
+
+<body ng-app="myApp" ng-controller="myCtrl" >
+
+<div>
+	
+	<h1>Bubba's Baking Company</h1>
+	<ul>
+		<a href = "" ng-click = "getView('!gallery')">Order Now</a>
+		<a href = "" ng-click = "getView('gallery')">Photo Gallery</a>
+	</ul>
+		
+			<form ng-submit = "addOrder()" ng-hide = "!orderView">
+				<fieldset>
+					<legend> Your order</legend>
+					<div class = "goods">
+						What baked good would you like?<select ng-model="bakedGoodSelected" ng-change = "getFlavors()" ng-options="bakedGood as bakedGood.treat for bakedGood in bakedGoods">
+						</select><br>
+					</div >
+					<div ng-if = "goodsFlag" >
+					What flavor would you like?<select ng-model="flavorSelected" ng-options="x as x for x in flavors" ng-change = "getQuantity(flavorSelected)">
+					</select><br>
+					</div>
+					
+					<div ng-if = "flavorsFlag" >
+					How many {{flavorSelected}} {{bakedGoodSelected.treat}}(s) would you like?<select ng-model="ttl" ng-options="x as x for x in quantPrice" ng-change = "getTotal(ttl)">
+					</select><br>
+					
+					</div>
+					
+					<div ng-if = "totalFlag">
+						your cost is: 
+						
+							{{ttl}}
+						<input type = "Submit" value = "Add to Cart">
+					</div>
+					
+				</fieldset>
+			</form>
+		
+			<fieldset class = "cart" ng-if = "orderView">
+				<legend>Your shopping cart TotalCost : ${{totalCost}}</legend>
+				<div ng-repeat = "x in orders">
+					<img src = {{x.pic}} id = "checkout-img"></img>
+					{{x.flavor}} {{x.good}} Price = {{x.price}} 
+					<input type = "checkbox" ng-model = "x.active">
+				
+				</div>
+				<button ng-click = "remove()" ng-hide= "!orderFlag">Remove Selected Items </button>
+				<button ng-click = "order()" ng-hide= "!orderFlag">Take me to Checkout</button>
+			</fieldset>
+	
+	
+	<div id = "mason-carousel" ng-if = "galleryView">
+	
+	
+		<h3>Photo Gallery</h3>
+	
+		
+		<span ng-click = "next()">
+			<img src = {{carouselPic}} id = "carousel-img" title = {{description}}>
+			</img>			
+		</span>
+		<br>
+		<button id="prev" ng-click = "prev()"> Prev &#10094;</button>
+		<button ng-click = "next()"id = "next">Next &#10095;</button><br>
+		<caption>
+		{{description}}
+		</caption>
+		
+	</div>
+	
+	
+	
+</div>
+
+<div id = "contactMeForm" ng-hide = "!contactFormFlag" >
+		<form ng-submit = "order()">
+			First Name* <input type = "text" placeholder = "John" ng-model = "contactInfo.firstName">
+			Last Name* <input type = "text" placeholder = "Doe" ng-model = "contactInfo.lastName">
+			Email* <input type = "email" placeholder = "John.Doe@example.com" ng-model = "contactInfo.email">
+			Phone* <input type = "text" placeholder = "XXX-XXX-XXXX" = ng-model = "contactInfo.phoneNumber">
+			<input type = "submit" value = "Submit Order">
+		</form>
+</div>
+
+
+
+<script src="myApp.js"></script>
+<script src="myCtrl.js"></script>
+
+</body>
+</html>
