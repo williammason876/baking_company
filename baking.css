@@ -1,0 +1,52 @@
+h1 {
+	text-align:center;
+	font-style: italic;
+}
+
+.cart{padding-top:50px;}
+
+#checkout-img{
+	width: 50px;
+	height: 50px;
+}
+legend{
+	font-weight:bold;
+}
+
+body{
+	background-color: aliceblue;
+}
+
+
+#mason-carousel{
+	padding-top: 50px;
+	text-align: center;
+	margin-left: 25%;
+	margin-right:25%;
+	width: 50%;
+	height: 500px;
+}
+#next{
+	height:400px;
+	background-color: transparent;
+	font-size: 16px;
+	color:black;
+	float: right;
+}	
+
+#prev{
+	height:400px;
+	background-color: transparent;
+	font-size: 16px;
+	color:black;
+	float:left;
+	
+}	
+
+button, input[type = submit]{
+	background-color: green;
+	color:white;
+}
+ul,h3, h5{
+	text-align:center;
+}
